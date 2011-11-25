@@ -41,6 +41,7 @@ void router(struct evhttp_request *r, void *arg) {
         struct evkeyvalq *headers = evhttp_request_get_output_headers(r);
         evhttp_add_header(headers, "Content-Type", "text/html; charset=UTF-8");
         evhttp_add_header(headers, "Server", LIBSRVR_SIGNATURE);
+        evhttp_add_header(headers, "Access-Control-Allow-Origin", "*");
 
         evbuffer_add_printf(buffer, "%s", html);
         evhttp_send_reply(r, HTTP_OK, "OK", buffer);
