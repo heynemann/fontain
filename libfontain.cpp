@@ -80,6 +80,8 @@ int main(int argc, char **argv) {
         }
     }
 
+    printf("Running server at %s:%d\n", options.address, options.port);
+
     libbase = event_base_new();
     libsrvr = evhttp_new(libbase);
     evhttp_bind_socket(libsrvr, options.address, options.port);
